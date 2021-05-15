@@ -1,7 +1,19 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import Formulario from "./components/Formulario";
 
 function App() {
+
+  //Array pricipal de citas - Inicia en un array vacío
+  const [citas, guradarCitas] = useState([]);
+
+  //Función que recoje las citas actuales y añade la nueva
+  const crearCita = cita => {
+    guradarCitas([
+      ...citas,
+      cita
+    ])
+  }
+
   return (
     <Fragment>
     <h1>Mi administrador</h1>
@@ -9,7 +21,9 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="one-half column">
-          <Formulario />
+          <Formulario 
+            crearCita={crearCita}
+          />
         </div>
         <div className="one-half column">
         
