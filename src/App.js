@@ -2,7 +2,6 @@ import React, {Fragment, useState, useEffect} from 'react';
 import Formulario from "./components/Formulario";
 import Cita from "./components/Cita";
 
-
 function App() {
 
 
@@ -43,7 +42,7 @@ function App() {
 
   return (
     <Fragment>
-    <h1>Mi administrador</h1>
+    <h1 className="cabecera">Solicite Cita</h1>
 
     <div className="container">
       <div className="row">
