@@ -13,7 +13,7 @@ function App() {
   }
 
   //Array pricipal de citas - Inicia en un array vacío
-  const [citas, guardarCitas] = useState([citasIniciales]);
+  const [citas, guardarCitas] = useState(citasIniciales);
 
   //Use effect para poder realizar ciertas operaciones cuando el state cambia 
   useEffect(() => {
