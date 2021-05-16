@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const Cita = ({cita, eliminarCita}) => (
+const Cita = ({cita, eliminarCita}) => {
+    return(
+    <Fragment>
+    {cita.id ?
     <div className="cita">
         <p>Mascota: <span>{cita.mascota}</span></p>
         <p>Propietario: <span>{cita.propietario}</span></p>
@@ -14,10 +17,14 @@ const Cita = ({cita, eliminarCita}) => (
             onClick={() => eliminarCita(cita.id)}
         >Eliminar &times;</button>
     </div>
-);
+    : null
+    }
+    </Fragment>
+    
+    )};
 
 Cita.propTypes = {
-    cita: PropTypes.array.isRequired,
+    cita: PropTypes.object.isRequired,
     eliminarCita: PropTypes.func.isRequired
 }
  
