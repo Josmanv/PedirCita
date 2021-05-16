@@ -1,19 +1,45 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import Formulario from "./components/Formulario";
 import Cita from "./components/Cita";
 
+
 function App() {
 
+
+  //citas en local storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if(!citasIniciales){
+    citasIniciales = [];
+  }
+
   //Array pricipal de citas - Inicia en un array vacío
-  const [citas, guradarCitas] = useState([]);
+  const [citas, guardarCitas] = useState([citasIniciales]);
+
+  //Use effect para poder realizar ciertas operaciones cuando el state cambia 
+  useEffect(() => {
+    let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+    if(citasIniciales){
+      localStorage.setItem('citas', JSON.stringify(citas));
+    }else{
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
+}, [citas]);
 
   //Función que recoje las citas actuales y añade la nueva
   const crearCita = cita => {
-    guradarCitas([
+    guardarCitas([
       ...citas,
       cita
     ])
   }
+
+  //Función para elimiar la cita por su id
+  const eliminarCita = id => {
+    const nuevasCitas = citas.filter(cita => cita.id !== id);
+    guardarCitas(nuevasCitas);
+  }
+
+  const titulo = citas.length === 0 ? "Añade una nueva cita" : "Tus citas";
 
   return (
     <Fragment>
@@ -27,11 +53,13 @@ function App() {
           />
         </div>
         <div className="one-half column">
-          <h2>CITAS</h2>
+          <h2>{titulo}</h2>
+         
           {citas.map(cita => (
             <Cita 
               key={cita.id}
               cita={cita}
+              eliminarCita={eliminarCita}
             />
           ))}
         </div>

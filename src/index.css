@@ -60,6 +60,15 @@ input[type="time"] {
   box-shadow: 0px 0px 5px 0px #000 inset;
 }
 
+.cita p:first-child{
+  background-color: #9f9e9e;
+  padding-right: 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px #000;
+  text-align: center;
+  color: #fff;
+}
+
 .cita p {
   font-weight: bold;
   margin-bottom: .8rem;
@@ -71,10 +80,12 @@ input[type="time"] {
 .cita:first-of-type {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  border-top: 5px solid #fff;
 }
 .cita:last-of-type {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  border-bottom: 5px solid #fff;
 }
 .button.eliminar,
 .button.eliminar:hover {
